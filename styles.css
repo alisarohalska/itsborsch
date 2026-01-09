@@ -2,19 +2,20 @@
   --text: #0b1220;
   --muted: rgba(11,18,32,.72);
 
-  --panel: rgba(255,255,255,.58);
-  --card: rgba(255,255,255,.70);
   --line: rgba(11,18,32,.12);
 
-  --blue: #3f86c6;     /* muted blue */
-  --yellow: #f1d06a;   /* muted yellow */
+  --blue: #3f86c6;
+  --yellow: #f1d06a;
 
   --shadow: 0 12px 30px rgba(11,18,32,.14);
   --radius: 18px;
 
   --maxw: 900px;
-  --space: 1.35rem;    /* base spacing */
-  --space-lg: 2.1rem;  /* larger spacing between blocks */
+
+  /* Wider spacing */
+  --space: 1.6rem;
+  --space-lg: 2.8rem;
+  --space-xl: 3.4rem;
 }
 
 *{ box-sizing: border-box; }
@@ -26,14 +27,12 @@ body{
   color: var(--text);
   line-height: 1.65;
 
-  /* Blue-yellow gradient background */
   background:
     radial-gradient(900px 520px at 15% 0%, rgba(63,134,198,.55), transparent 60%),
     radial-gradient(900px 520px at 85% 10%, rgba(241,208,106,.55), transparent 62%),
     linear-gradient(135deg, rgba(63,134,198,.28) 0%, rgba(241,208,106,.30) 100%);
 }
 
-/* Layout */
 .container{
   width: min(var(--maxw), calc(100% - 2rem));
   margin: 0 auto;
@@ -52,7 +51,6 @@ body{
 }
 .skip-link:focus{ top: 1rem; }
 
-/* Top bar */
 .topbar{
   position: sticky;
   top: 0;
@@ -67,29 +65,33 @@ body{
   align-items: center;
   justify-content: space-between;
   gap: 1rem;
-  padding: .95rem 0;
+  padding: 1.05rem 0;
 }
 
 .brand{
   display: flex;
   align-items: center;
-  gap: .65rem;
+  gap: .7rem;
 }
+
+/* Bigger "Borscht" in header */
+.brand__text{
+  font-weight: 900;
+  font-size: 1.45rem;
+  letter-spacing: .3px;
+}
+
 .brand__dot{
   width: 12px;
   height: 12px;
   border-radius: 999px;
   background: linear-gradient(135deg, var(--blue), var(--yellow));
-  box-shadow: 0 0 0 6px rgba(63,134,198,.12);
-}
-.brand__text{
-  font-weight: 800;
-  letter-spacing: .2px;
+  box-shadow: 0 0 0 7px rgba(63,134,198,.12);
 }
 
 .nav{
   display: flex;
-  gap: .6rem;
+  gap: .65rem;
   flex-wrap: wrap;
   justify-content: flex-end;
 }
@@ -97,85 +99,94 @@ body{
 .nav__link{
   text-decoration: none;
   color: rgba(11,18,32,.78);
-  padding: .6rem .9rem;
+  padding: .65rem .95rem;
   border-radius: 999px;
   border: 1px solid transparent;
-  transition: transform .12s ease, background .12s ease, border-color .12s ease, color .12s ease;
-  font-weight: 700;
+  transition: background .12s ease, border-color .12s ease, color .12s ease;
+  font-weight: 800;
   font-size: .95rem;
 }
+
 .nav__link:hover{
   color: var(--text);
   border-color: rgba(11,18,32,.16);
-  background: rgba(255,255,255,.50);
+  background: rgba(255,255,255,.55);
 }
+
 .nav__link.active{
   color: var(--text);
   background: linear-gradient(135deg, rgba(63,134,198,.30), rgba(241,208,106,.32));
   border-color: rgba(11,18,32,.16);
 }
 
-/* Sections */
+/* Wider spacing between sections */
 .section{
-  padding: calc(var(--space-lg) + .4rem) 0;
-  scroll-margin-top: 92px;
+  padding: var(--space-xl) 0;
+  scroll-margin-top: 96px;
 }
 
 .section__header h1,
 .section__header h2{
-  margin: 0 0 .55rem 0;
+  margin: 0 0 .65rem 0;
   line-height: 1.15;
 }
+
 .lead{
   margin: .35rem 0 0 0;
   color: var(--muted);
   max-width: 75ch;
 }
 
-/* Bigger distance between blocks */
+/* Cards: keep them on the same level in a row */
 .grid{
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: var(--space-lg);
-  margin-top: var(--space-lg);
+  gap: var(--space-xl);
+  margin-top: var(--space-xl);
+  align-items: stretch;
 }
 
 .card{
-  background: linear-gradient(180deg, rgba(255,255,255,.60), rgba(255,255,255,.40));
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+
+  background: linear-gradient(180deg, rgba(255,255,255,.66), rgba(255,255,255,.42));
   border: 1px solid var(--line);
   border-radius: var(--radius);
-  padding: 1.25rem 1.25rem;
+  padding: 1.35rem 1.35rem;
   box-shadow: var(--shadow);
 }
 
+/* More vertical distance when cards are stacked (outside grids too) */
 .card + .card{
-  margin-top: var(--space-lg);
+  margin-top: var(--space-xl);
 }
 
 .card h2, .card h3{
-  margin: 0 0 .7rem 0;
+  margin: 0 0 .75rem 0;
   line-height: 1.2;
 }
-.card p{ margin: .7rem 0; }
+.card p{ margin: .8rem 0; }
 
 .list{
   margin: .25rem 0 0 1.05rem;
   color: var(--muted);
 }
-.list li{ margin: .45rem 0; }
+.list li{ margin: .5rem 0; }
 
 .steps{
   margin: .25rem 0 0 1.2rem;
   color: var(--muted);
 }
-.steps li{ margin: .55rem 0; }
+.steps li{ margin: .6rem 0; }
 
 .media{
   display: grid;
   grid-template-columns: 1.1fr .9fr;
-  gap: var(--space-lg);
-  align-items: start;
-  margin-top: var(--space-lg);
+  gap: var(--space-xl);
+  align-items: stretch;
+  margin-top: var(--space-xl);
 }
 
 .photo{
@@ -185,9 +196,11 @@ body{
   border-radius: var(--radius);
   overflow: hidden;
   box-shadow: var(--shadow);
-  min-height: 260px;
+
+  min-height: 320px;
   display: grid;
 }
+
 .photo img{
   width: 100%;
   height: 100%;
@@ -195,12 +208,13 @@ body{
   object-fit: cover;
   background: rgba(255,255,255,.35);
 }
+
 .photo figcaption{
-  padding: .8rem 1rem;
+  padding: .9rem 1rem;
   color: var(--muted);
   font-size: .92rem;
   border-top: 1px solid var(--line);
-  background: rgba(255,255,255,.45);
+  background: rgba(255,255,255,.48);
 }
 
 .link{
@@ -213,24 +227,23 @@ body{
 .note{
   color: var(--muted);
   border-left: 3px solid rgba(63,134,198,.55);
-  padding-left: .85rem;
-  margin-top: 1rem;
+  padding-left: .9rem;
+  margin-top: 1.05rem;
 }
 
 /* Footer */
 .footer{
-  margin-top: var(--space-lg);
-  padding: 1.2rem 0 2.6rem;
+  margin-top: var(--space-xl);
+  padding: 1.35rem 0 2.8rem;
   border-top: 1px solid var(--line);
   text-align: center;
 }
-
 .footer__line{
-  margin: .2rem 0;
+  margin: .25rem 0;
   color: rgba(11,18,32,.78);
 }
 .footer__line--strong{
-  font-weight: 800;
+  font-weight: 900;
   letter-spacing: .2px;
 }
 .footer__line--calm{
@@ -244,11 +257,13 @@ body{
     align-items: flex-start;
     flex-direction: column;
   }
+
   .nav{
     width: 100%;
     justify-content: flex-start;
   }
+
   .grid{ grid-template-columns: 1fr; }
   .media{ grid-template-columns: 1fr; }
-  .section{ padding: var(--space-lg) 0; }
+  .section{ padding: var(--space-xl) 0; }
 }
