@@ -18,63 +18,21 @@
         <span class="brand__text">Borscht</span>
       </div>
 
+      <!-- Swapped order in the header: Classic first, then About, then Innovations -->
       <nav class="nav" aria-label="Primary">
-        <a class="nav__link active" href="#about" data-section="about">About Borscht</a>
-        <a class="nav__link" href="#classic" data-section="classic">Classic Recipe</a>
+        <a class="nav__link active" href="#classic" data-section="classic">Classic Recipe</a>
+        <a class="nav__link" href="#about" data-section="about">About Borscht</a>
         <a class="nav__link" href="#innovations" data-section="innovations">Innovative Approaches</a>
       </nav>
     </div>
   </header>
 
   <main id="main" class="container" role="main">
-    <section id="about" class="section">
-      <div class="section__header">
-        <h1>Borscht: A Ukrainian Classic with a Long Story</h1>
-        <p class="lead">
-          Borscht is a beet-based soup with many regional versions, strongly connected to Ukrainian home cooking and family traditions.
-        </p>
-      </div>
 
-      <div class="grid">
-        <article class="card">
-          <h2>History (short overview)</h2>
-          <ul class="list">
-            <li>The word “borscht” is linked to older Slavic soups and historical precursors of the dish.</li>
-            <li>References to borscht traditions appear in historical notes connected to the Kyiv region.</li>
-            <li>“Culture of Ukrainian borscht cooking” is recognized by UNESCO as intangible cultural heritage in need of urgent safeguarding.</li>
-          </ul>
-        </article>
-
-        <article class="card">
-          <h2>Interesting facts</h2>
-          <ul class="list">
-            <li>Many people love borscht even more the next day, when the flavor has time to develop.</li>
-            <li>Common serving additions include sour cream, fresh herbs, and garlic buns (pampushky).</li>
-            <li>There is no single “one true” version—recipes change by region, season, and family style.</li>
-          </ul>
-        </article>
-      </div>
-
-      <article class="card">
-        <h2>Videos about borscht history</h2>
-        <ul class="list">
-          <li>
-            UNESCO background (article):
-            <a class="link" href="https://www.unesco.org/en/articles/culture-ukrainian-borscht-cooking-inscribed-list-intangible-cultural-heritage-need-urgent"
-               target="_blank" rel="noopener">UNESCO: Culture of Ukrainian borscht cooking</a>
-          </li>
-          <li>
-            Video explainer:
-            <a class="link" href="https://www.youtube.com/watch?v=bmLurghfo5g"
-               target="_blank" rel="noopener">What Is Ukrainian Borscht? History, Variations & How to…</a>
-          </li>
-        </ul>
-      </article>
-    </section>
-
+    <!-- 1) CLASSIC moved to the top -->
     <section id="classic" class="section">
       <div class="section__header">
-        <h2>Classic Ukrainian Borscht (Home-Style)</h2>
+        <h1>Classic Ukrainian Borscht (Home-Style)</h1>
         <p class="lead">
           This is a practical “family pot” approach: a broth base, sautéed vegetables, beet for color, and finishing touches like garlic and herbs.
         </p>
@@ -82,15 +40,15 @@
 
       <div class="media">
         <figure class="photo">
-          <!-- Replace src with your own file, e.g. images/borscht.jpg -->
-          <img src="images/borscht1.jpg" />
+          <!-- Add your own image path later, e.g. images/borscht.jpg -->
+          <img src="" alt="Borscht photo (add your own image)" />
           <figcaption>
-    
+            Add your own photo here (update the image src).
           </figcaption>
         </figure>
 
         <article class="card">
-          <h3>Ingredients</h3>
+          <h2>Ingredients</h2>
           <ul class="list">
             <li>Broth base: beef or pork (or a rich vegetable broth).</li>
             <li>Vegetables: beets, potatoes, cabbage, carrots, onion.</li>
@@ -102,7 +60,7 @@
       </div>
 
       <article class="card">
-        <h3>Method (step-by-step)</h3>
+        <h2>Method (step-by-step)</h2>
         <ol class="steps">
           <li>Simmer the broth until the meat is tender (if using meat), then season lightly.</li>
           <li>Prep vegetables: shred cabbage, dice potatoes, grate/julienne beets and carrots, chop onion.</li>
@@ -118,6 +76,52 @@
             Ukrainian borscht cooking (video)
           </a>
         </p>
+      </article>
+    </section>
+
+    <!-- 2) ABOUT moved below Classic -->
+    <section id="about" class="section">
+      <div class="section__header">
+        <h2>About Borscht</h2>
+        <p class="lead">
+          Borscht is a beet-based soup with many regional versions, strongly connected to Ukrainian home cooking and family traditions.
+        </p>
+      </div>
+
+      <div class="grid">
+        <article class="card">
+          <h3>History (short overview)</h3>
+          <ul class="list">
+            <li>The word “borscht” is linked to older Slavic soups and historical precursors of the dish.</li>
+            <li>References to borscht traditions appear in historical notes connected to the Kyiv region.</li>
+            <li>“Culture of Ukrainian borscht cooking” is recognized by UNESCO as intangible cultural heritage in need of urgent safeguarding.</li>
+          </ul>
+        </article>
+
+        <article class="card">
+          <h3>Interesting facts</h3>
+          <ul class="list">
+            <li>Many people love borscht even more the next day, when the flavor has time to develop.</li>
+            <li>Common serving additions include sour cream, fresh herbs, and garlic buns (pampushky).</li>
+            <li>There is no single “one true” version—recipes change by region, season, and family style.</li>
+          </ul>
+        </article>
+      </div>
+
+      <article class="card">
+        <h3>Videos about borscht history</h3>
+        <ul class="list">
+          <li>
+            UNESCO background (article):
+            <a class="link" href="https://www.unesco.org/en/articles/culture-ukrainian-borscht-cooking-inscribed-list-intangible-cultural-heritage-need-urgent"
+               target="_blank" rel="noopener">UNESCO: Culture of Ukrainian borscht cooking</a>
+          </li>
+          <li>
+            Video explainer:
+            <a class="link" href="https://www.youtube.com/watch?v=bmLurghfo5g"
+               target="_blank" rel="noopener">What Is Ukrainian Borscht? History, Variations & How to…</a>
+          </li>
+        </ul>
       </article>
     </section>
 
@@ -190,7 +194,7 @@
 
     <footer class="footer" role="contentinfo">
       <p class="footer__line footer__line--strong">All borscht rights must be protected.</p>
-      <p class="footer__line footer__line--calm">KEEP CALM AND EAT BORSHCHT</p>
+      <p class="footer__line footer__line--calm">KEEP CALM AND EAT BORSHCH</p>
     </footer>
   </main>
 
