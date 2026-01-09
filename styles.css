@@ -14,8 +14,8 @@
 
   /* Wider spacing */
   --space: 1.6rem;
-  --space-lg: 2.8rem;
-  --space-xl: 3.4rem;
+  --space-lg: 3.2rem;
+  --space-xl: 4.2rem;
 }
 
 *{ box-sizing: border-box; }
@@ -25,7 +25,8 @@ body{
   margin: 0;
   font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, "Noto Sans", "Helvetica Neue", sans-serif;
   color: var(--text);
-  line-height: 1.65;
+   font-size: clamp(17px, 1.1vw + 14px, 20px);
+  line-height: 1.75;
 
   background:
     radial-gradient(900px 520px at 15% 0%, rgba(63,134,198,.55), transparent 60%),
@@ -34,7 +35,7 @@ body{
 }
 
 .container{
-  width: min(var(--maxw), calc(100% - 2rem));
+  width: min(var(--maxw), calc(100% - 1.25rem));
   margin: 0 auto;
 }
 
@@ -183,7 +184,7 @@ body{
 
 .media{
   display: grid;
-  grid-template-columns: 1.1fr .9fr;
+  grid-template-columns: 1.35fr .65fr;
   gap: var(--space-xl);
   align-items: stretch;
   margin-top: var(--space-xl);
@@ -197,7 +198,7 @@ body{
   overflow: hidden;
   box-shadow: var(--shadow);
 
-  min-height: 320px;
+  min-height: 460px;
   display: grid;
 }
 
