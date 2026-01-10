@@ -14,8 +14,8 @@
 
   /* Wider spacing */
   --space: 1.6rem;
-  --space-lg: 3.0rem;
-  --space-xl: 4.0rem;
+  --space-lg: 2.8rem;
+  --space-xl: 3.4rem;
 }
 
 *{ box-sizing: border-box; }
