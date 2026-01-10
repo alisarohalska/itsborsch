@@ -181,12 +181,15 @@ background-position:
 .grid{
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr)); 
+  gap: 24px;
   margin-top: var(--space-xl);  align-items: start;
 }
 
 .card{
   height: 100%;
   display: flex;
+  gap: 24px;
+  align-items: stretch; /* зазвичай за замовчуванням, але краще явно */
   flex-direction: column;
 
   background: linear-gradient(180deg, rgba(255,255,255,.66), rgba(255,255,255,.42));
@@ -194,6 +197,9 @@ background-position:
   border-radius: var(--radius);
   padding: 1.35rem 1.35rem;
   box-shadow: var(--shadow);
+}
+.card {
+  flex: 1;   /* обидві картки однакової ширини */
 }
 
 /* More vertical distance when cards are stacked (outside grids too) */
@@ -267,6 +273,9 @@ background-position:
   border-left: 3px solid rgba(63,134,198,.55);
   padding-left: .9rem;
   margin-top: 1.05rem;
+}
+card .video-link {   /* клас/селектор під свій HTML */
+  margin-top: auto;   /* штовхає блок вниз */
 }
 
 /* Footer */
