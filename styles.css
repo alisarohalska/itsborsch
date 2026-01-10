@@ -32,6 +32,46 @@ body{
     radial-gradient(900px 520px at 85% 10%, rgba(241,208,106,.55), transparent 62%),
     linear-gradient(135deg, rgba(63,134,198,.28) 0%, rgba(241,208,106,.30) 100%);
 }
+/* Background illustrations layer (repeating + blurred) */
+body{
+  position: relative;
+  overflow-x: hidden;
+}
+
+body::before{
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+
+  /* Repeat the same illustration sheet many times */
+  background-image:
+  url("assets/borscht_set.png"),
+  url("assets/borscht_set.png"),
+  url("assets/borscht_set.png");
+
+background-repeat: repeat, repeat, repeat;
+
+background-size:
+  560px auto,
+  420px auto,
+  680px auto;
+
+background-position:
+  20px 10px,
+  160px 220px,
+  320px 80px;
+
+
+  /* Make it subtle */
+  opacity: 0.22;
+  filter: blur(5px);
+
+  /* Optional: adds softness so it blends with your gradient */
+  mix-blend-mode: multiply;
+}
+
 
 .container{
   width: min(var(--maxw), calc(100% - 2rem));
