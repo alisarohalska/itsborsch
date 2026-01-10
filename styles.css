@@ -180,7 +180,7 @@ background-position:
 /* Cards: keep them on the same level in a row */
 .grid{
   display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));  gap: var(--space-xl);
+  grid-template-columns: repeat23, minmax(0, 1fr));  gap: var(--space-xl);
   margin-top: var(--space-xl);
   align-items: stretch;
 }
