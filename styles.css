@@ -25,8 +25,7 @@ body{
   margin: 0;
   font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, "Noto Sans", "Helvetica Neue", sans-serif;
   color: var(--text);
-   font-size: clamp(18px;
-  line-height: 1.75;
+  line-height: 1.65;
 
   background:
     radial-gradient(900px 520px at 15% 0%, rgba(63,134,198,.55), transparent 60%),
@@ -35,7 +34,7 @@ body{
 }
 
 .container{
-  width: min(var(--maxw), calc(100% - 1.25rem));
+  width: min(var(--maxw), calc(100% - 2rem));
   margin: 0 auto;
 }
 
@@ -184,7 +183,7 @@ body{
 
 .media{
   display: grid;
-  grid-template-columns: 1.35fr .65fr;
+  grid-template-columns: 1.1fr .9fr;
   gap: var(--space-xl);
   align-items: stretch;
   margin-top: var(--space-xl);
@@ -198,7 +197,7 @@ body{
   overflow: hidden;
   box-shadow: var(--shadow);
 
-  min-height: 460px;
+  min-height: 320px;
   display: grid;
 }
 
