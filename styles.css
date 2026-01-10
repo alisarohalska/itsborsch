@@ -289,16 +289,6 @@ background-position:
   letter-spacing: .12em;
 }
 
-/* About section: align third card lower */
-#about .grid .card:nth-child(3){
-  margin-top: var(--space-xl);
-}
-
-/* About section: align first two cards */
-#about .grid .card:nth-child(1),
-#about .grid .card:nth-child(2){
-  align-self: start;
-}
 
 /* Mobile */
 @media (max-width: 720px){
@@ -311,8 +301,5 @@ background-position:
     width: 100%;
     justify-content: flex-start;
   }
-
-  .grid{ grid-template-columns: 1fr; }
-  .media{ grid-template-columns: 1fr; }
-  .section{ padding: var(--space-xl) 0; }
 }
+  
