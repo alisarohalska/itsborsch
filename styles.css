@@ -23,6 +23,32 @@ body{
   color: var(--text);
   line-height: 1.65;
 
+    /* Repeat the same illustration sheet many times */
+  background-image:
+  url("assets/borscht1.png"),
+  url("assets/borscht1.png"),
+  url("assets/borscht1.png");
+
+background-repeat: repeat, repeat, repeat;
+
+background-size:
+  560px auto,
+  420px auto,
+  680px auto;
+
+background-position:
+  20px 10px,
+  160px 220px,
+  320px 80px;
+
+
+  /* Make it subtle */
+  opacity: 0.22;
+  filter: blur(5px);
+
+  /* Optional: adds softness so it blends with your gradient */
+  mix-blend-mode: multiply;
+}
 
 /* Background illustrations layer (repeating + blurred) */
 body{
@@ -47,32 +73,6 @@ body::after{
   background: rgba(0,0,0,.42);
 }
 
-  /* Repeat the same illustration sheet many times */
-  background-image:
-  url("assets/borscht_set.png"),
-  url("assets/borscht_set.png"),
-  url("assets/borscht_set.png");
-
-background-repeat: repeat, repeat, repeat;
-
-background-size:
-  560px auto,
-  420px auto,
-  680px auto;
-
-background-position:
-  20px 10px,
-  160px 220px,
-  320px 80px;
-
-
-  /* Make it subtle */
-  opacity: 0.22;
-  filter: blur(5px);
-
-  /* Optional: adds softness so it blends with your gradient */
-  mix-blend-mode: multiply;
-}
 
 
 .container{
