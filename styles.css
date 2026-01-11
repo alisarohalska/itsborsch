@@ -1,14 +1,30 @@
-```css
 :root{
-  --text: rgba(255,255,255,.92);
-  --muted: rgba(255,255,255,.72);
-  --line: rgba(255,255,255,.12);
+  --text: #0b1220;
+  --muted: rgba(11,18,32,.72);
 
-  --shadow: 0 18px 44px rgba(0,0,0,.55);
+  --line: rgba(11,18,32,.12);
+
+  --black: #000000;
+  --gray: #808080;
+  --shadow-black-20: rgba(0, 0, 0, 0.20);
+  --shadow-black-35: rgba(0, 0, 0, 0.35);
+  --shadow-gray-25: rgba(128, 128, 128, 0.25);
+
+  /* Ready shadows */
+  --shadow-sm: 0 1px 2px var(--shadow-black-20);
+  --shadow-md: 0 6px 18px -8px var(--shadow-black-35),
+               0 2px 6px var(--shadow-gray-25);
+
+  /* Transition preset */
+  --transition-ui: box-shadow 180ms ease, transform 180ms ease,
+                   background-color 180ms ease, color 180ms ease;
+}
+  --shadow: 0 12px 30px rgba(11,18,32,.14);
   --radius: 18px;
 
   --maxw: 900px;
 
+  /* Wider spacing */
   --space: 1.6rem;
   --space-lg: 2.8rem;
   --space-xl: 3.4rem;
@@ -16,7 +32,6 @@
 
 *{ box-sizing: border-box; }
 html{ scroll-behavior: smooth; }
-html, body{ height: 100%; }
 
 body{
   margin: 0;
@@ -24,49 +39,12 @@ body{
   color: var(--text);
   line-height: 1.65;
 
-  /* deep dark base */
   background:
-    radial-gradient(1200px 700px at 20% -10%, rgba(255,255,255,.06), transparent 60%),
-    radial-gradient(900px 520px at 90% 10%, rgba(255,255,255,.04), transparent 62%),
-    linear-gradient(180deg, #05070c 0%, #070b12 45%, #05070c 100%);
-
-  position: relative;
-  overflow-x: hidden;
+    radial-gradient(900px 520px at 15% 0%, rgba(63,134,198,.55), transparent 60%),
+    radial-gradient(900px 520px at 85% 10%, rgba(241,208,106,.55), transparent 62%),
+    linear-gradient(135deg, rgba(63,134,198,.28) 0%, rgba(241,208,106,.30) 100%);
 }
 
-/* Watermark illustrations (repeating + blurred)
-   Multiple backgrounds are comma-separated layers. [web:36] */
-body::before{
-  content: "";
-  position: fixed;
-  inset: 0;
-  z-index: -2;
-  pointer-events: none;
-
-  background-image:
-    url("assets/borscht1.png"),
-    url("assets/borscht1.png"),
-    url("assets/borscht1.png");
-  background-repeat: repeat, repeat, repeat;
-  background-size: 560px auto, 420px auto, 680px auto;
-  background-position: 20px 10px, 160px 220px, 320px 80px;
-
-  opacity: 0.12;      /* ледь помітний */
-  filter: blur(7px);  /* глибше */
-  mix-blend-mode: multiply;
-}
-
-/* Dark overlay like "secret" style (readability) */
-body::after{
-  content:"";
-  position: fixed;
-  inset: 0;
-  z-index: -1;         /* above watermark, below content */
-  pointer-events: none;
-  background: rgba(0,0,0,.48);
-}
-
-/* ---- Layout ---- */
 .container{
   width: min(var(--maxw), calc(100% - 2rem));
   margin: 0 auto;
@@ -77,8 +55,8 @@ body::after{
   top: -100px;
   left: 1rem;
   background: rgba(255,255,255,.85);
-  color: #0b1220;
-  border: 1px solid rgba(255,255,255,.18);
+  color: var(--text);
+  border: 1px solid var(--line);
   padding: .6rem .8rem;
   border-radius: 12px;
   z-index: 9999;
@@ -90,8 +68,8 @@ body::after{
   top: 0;
   z-index: 50;
   backdrop-filter: blur(12px);
-  background: rgba(0,0,0,.55);
-  border-bottom: 1px solid rgba(255,255,255,.12);
+  background: rgba(255,255,255,.45);
+  border-bottom: 1px solid var(--line);
 }
 
 .topbar__inner{
@@ -108,19 +86,19 @@ body::after{
   gap: .7rem;
 }
 
+/* Bigger "Borscht" in header */
 .brand__text{
   font-weight: 900;
   font-size: 1.45rem;
   letter-spacing: .3px;
 }
 
-/* прибрали залежність від --blue/--yellow */
 .brand__dot{
   width: 12px;
   height: 12px;
   border-radius: 999px;
-  background: rgba(255,255,255,.92);
-  box-shadow: 0 0 0 7px rgba(255,255,255,.10);
+  background: linear-gradient(135deg, var(--blue), var(--yellow));
+  box-shadow: 0 0 0 7px rgba(63,134,198,.12);
 }
 
 .nav{
@@ -132,7 +110,7 @@ body::after{
 
 .nav__link{
   text-decoration: none;
-  color: rgba(255,255,255,.82);
+  color: rgba(11,18,32,.78);
   padding: .65rem .95rem;
   border-radius: 999px;
   border: 1px solid transparent;
@@ -143,17 +121,17 @@ body::after{
 
 .nav__link:hover{
   color: var(--text);
-  border-color: rgba(255,255,255,.16);
-  background: rgba(255,255,255,.08);
+  border-color: rgba(11,18,32,.16);
+  background: rgba(255,255,255,.55);
 }
 
 .nav__link.active{
   color: var(--text);
-  background: rgba(255,255,255,.10);
-  border-color: rgba(255,255,255,.18);
+  background: linear-gradient(135deg, rgba(63,134,198,.30), rgba(241,208,106,.32));
+  border-color: rgba(11,18,32,.16);
 }
 
-/* Sections */
+/* Wider spacing between sections */
 .section{
   padding: var(--space-xl) 0;
   scroll-margin-top: 96px;
@@ -171,7 +149,7 @@ body::after{
   max-width: 75ch;
 }
 
-/* Grid + cards */
+/* Cards: keep them on the same level in a row */
 .grid{
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
@@ -185,14 +163,17 @@ body::after{
   display: flex;
   flex-direction: column;
 
-  background: rgba(0,0,0,.52);
-  border: 1px solid rgba(255,255,255,.14);
+  background: linear-gradient(180deg, rgba(255,255,255,.66), rgba(255,255,255,.42));
+  border: 1px solid var(--line);
   border-radius: var(--radius);
   padding: 1.35rem 1.35rem;
   box-shadow: var(--shadow);
 }
 
-.card + .card{ margin-top: var(--space-xl); }
+/* More vertical distance when cards are stacked (outside grids too) */
+.card + .card{
+  margin-top: var(--space-xl);
+}
 
 .card h2, .card h3{
   margin: 0 0 .75rem 0;
@@ -212,7 +193,6 @@ body::after{
 }
 .steps li{ margin: .6rem 0; }
 
-/* Media + photo */
 .media{
   display: grid;
   grid-template-columns: 1.1fr .9fr;
@@ -223,8 +203,8 @@ body::after{
 
 .photo{
   margin: 0;
-  background: rgba(255,255,255,.06);
-  border: 1px solid rgba(255,255,255,.14);
+  background: rgba(255,255,255,.40);
+  border: 1px solid var(--line);
   border-radius: var(--radius);
   overflow: hidden;
   box-shadow: var(--shadow);
@@ -238,27 +218,27 @@ body::after{
   height: 100%;
   display: block;
   object-fit: cover;
-  background: rgba(255,255,255,.08);
+  background: rgba(255,255,255,.35);
 }
 
 .photo figcaption{
   padding: .9rem 1rem;
   color: var(--muted);
   font-size: .92rem;
-  border-top: 1px solid rgba(255,255,255,.12);
-  background: rgba(0,0,0,.35);
+  border-top: 1px solid var(--line);
+  background: rgba(255,255,255,.48);
 }
 
 .link{
-  color: rgba(255,255,255,.92);
+  color: #0b1220;
   text-underline-offset: 3px;
-  text-decoration-color: rgba(255,255,255,.38);
+  text-decoration-color: rgba(63,134,198,.55);
 }
-.link:hover{ text-decoration-color: rgba(255,255,255,.70); }
+.link:hover{ text-decoration-color: rgba(241,208,106,.85); }
 
 .note{
   color: var(--muted);
-  border-left: 3px solid rgba(255,255,255,.28);
+  border-left: 3px solid rgba(63,134,198,.55);
   padding-left: .9rem;
   margin-top: 1.05rem;
 }
@@ -267,12 +247,12 @@ body::after{
 .footer{
   margin-top: var(--space-xl);
   padding: 1.35rem 0 2.8rem;
-  border-top: 1px solid rgba(255,255,255,.12);
+  border-top: 1px solid var(--line);
   text-align: center;
 }
 .footer__line{
   margin: .25rem 0;
-  color: rgba(255,255,255,.70);
+  color: rgba(11,18,32,.78);
 }
 .footer__line--strong{
   font-weight: 900;
@@ -299,3 +279,4 @@ body::after{
   .media{ grid-template-columns: 1fr; }
   .section{ padding: var(--space-xl) 0; }
 }
+
