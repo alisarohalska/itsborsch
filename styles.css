@@ -42,14 +42,14 @@ body::before{
   content: "";
   position: fixed;
   inset: 0;
-  z-index: -1;
+  z-index: -2;
   pointer-events: none;
   
 body::after{
   content: "";
   position: fixed;
   inset: 0;
-  z-index: -2;
+  z-index: -1;
   pointer-events: none;
 
   background: rgba(0,0,0,.42);
