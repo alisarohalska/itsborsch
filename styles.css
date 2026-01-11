@@ -1,104 +1,300 @@
 :root{
-  --text: #ffffff;
-  --muted: rgba(255,255,255,.78);
-  --shadow: 0 18px 40px rgba(0,0,0,.35);
+  --text: rgba(255,255,255,.92);
+  --muted: rgba(255,255,255,.72);
+
+  --line: rgba(255,255,255,.12);
+
+  --shadow: 0 18px 44px rgba(0,0,0,.55);
   --radius: 18px;
+
+  --maxw: 900px;
+
+  --space: 1.6rem;
+  --space-lg: 2.8rem;
+  --space-xl: 3.4rem;
 }
 
 *{ box-sizing: border-box; }
-
-html, body{ height: 100%; }
+html{ scroll-behavior: smooth; }
 
 body{
   margin: 0;
   font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, "Noto Sans", "Helvetica Neue", sans-serif;
   color: var(--text);
   line-height: 1.65;
-}
 
-/* wrapper як у твоєму прикладі */
-.secret{
-  min-height: 100vh;
-  display: grid;
-  grid-template-rows: auto 1fr;
-  padding: 1.2rem;
+ background:
+    radial-gradient(1200px 700px at 20% -10%, rgba(255,255,255,.06), transparent 60%),
+    radial-gradient(900px 520px at 90% 10%, rgba(255,255,255,.04), transparent 62%),
+    linear-gradient(180deg, #05070c 0%, #070b12 45%, #05070c 100%);
+}
+/* Background illustrations layer (repeating + blurred) */
+body{
   position: relative;
-  overflow: hidden;
+  overflow-x: hidden;
 }
 
-/* 1) ФОН з тими ж картинками (окремим шаром, щоб blur не чіпав текст) */
-.secret::after{
-  content:"";
+body::before{
+  content: "";
   position: fixed;
   inset: 0;
-  z-index: -2;
+  z-index: -1;
   pointer-events: none;
 
-  /* ті ж зображення, що у твоєму коді */
   background-image:
     url("assets/borscht1.png"),
     url("assets/borscht1.png"),
     url("assets/borscht1.png");
 
   background-repeat: repeat, repeat, repeat;
-  background-size: 560px auto, 420px auto, 680px auto;
-  background-position: 20px 10px, 160px 220px, 320px 80px;
 
-  /* “subtle” як ти хотіла */
-  opacity: 0.22;
-  filter: blur(5px);
+  background-size:
+    560px auto,
+    420px auto,
+    680px auto;
+
+  background-position:
+    20px 10px,
+    160px 220px,
+    320px 80px;
+
+  opacity: 0.16;     /* темніше/спокійніше */
+  filter: blur(7px); /* глибше */
   mix-blend-mode: multiply;
 }
 
-/* 2) Темний оверлей для читабельності — як у прикладі */
-.secret::before{
-  content:"";
+
+.container{
+  width: min(var(--maxw), calc(100% - 2rem));
+  margin: 0 auto;
+}
+
+.skip-link{
   position: absolute;
-  inset: 0;
-  z-index: -1;
-  pointer-events: none;
-  background: rgba(0,0,0,.38);
+  top: -100px;
+  left: 1rem;
+  background: rgba(255,255,255,.85);
+  color: var(--text);
+  border: 1px solid var(--line);
+  padding: .6rem .8rem;
+  border-radius: 12px;
+  z-index: 9999;
+}
+.skip-link:focus{ top: 1rem; }
+
+.topbar{
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  backdrop-filter: blur(12px);
+  background: rgba(0,0,0,.55);
+  border-bottom: 1px solid rgba(255,255,255,.12);
 }
 
-/* кнопка назад — 1в1 стиль як у прикладі */
-.back-btn{
-  position: relative;
-  z-index: 1;
-  width: fit-content;
+.topbar__inner{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 1.05rem 0;
+}
 
-  display: inline-flex;
-  text-decoration: none;
-  color: var(--text);
+.brand{
+  display: flex;
+  align-items: center;
+  gap: .7rem;
+}
+
+/* Bigger "Borscht" in header */
+.brand__text{
   font-weight: 900;
+  font-size: 1.45rem;
+  letter-spacing: .3px;
+}
 
-  padding: .75rem 1rem;
+.brand__dot{
+  width: 12px;
+  height: 12px;
   border-radius: 999px;
-  border: 1px solid rgba(255,255,255,.35);
-  background: rgba(0,0,0,.22);
-  backdrop-filter: blur(8px);
+  background: linear-gradient(135deg, var(--blue), var(--yellow));
+  box-shadow: 0 0 0 7px rgba(63,134,198,.12);
 }
 
-.secret__center{
-  position: relative;
-  z-index: 1;
-
-  display: grid;
-  place-items: center;
-  padding: 1rem;
+.nav{
+  display: flex;
+  gap: .65rem;
+  flex-wrap: wrap;
+  justify-content: flex-end;
 }
 
-.secret__message{
-  text-align: center;
+.nav__link{
+  text-decoration: none;
+  color: rgba(255,255,255,.82);
+  padding: .65rem .95rem;
+  border-radius: 999px;
+  border: 1px solid transparent;
+  transition: background .12s ease, border-color .12s ease, color .12s ease;
+  font-weight: 800;
+  font-size: .95rem;
+}
+
+.nav__link:hover{
   color: var(--text);
-  font-weight: 1000;
-  text-transform: uppercase;
-  letter-spacing: .06em;
+  border-color: rgba(255,255,255,.16);
+  background: rgba(255,255,255,.08);
+}
 
-  font-size: clamp(26px, 3.2vw + 12px, 56px);
-  padding: 1.2rem 1.3rem;
+.nav__link.active{
+  color: var(--text);
+  background: rgba(255,255,255,.10);
+  border-color: rgba(255,255,255,.18);
+}
+
+/* Wider spacing between sections */
+.section{
+  padding: var(--space-xl) 0;
+  scroll-margin-top: 96px;
+}
+
+.section__header h1,
+.section__header h2{
+  margin: 0 0 .65rem 0;
+  line-height: 1.15;
+}
+
+.lead{
+  margin: .35rem 0 0 0;
+  color: var(--muted);
+  max-width: 75ch;
+}
+
+/* Cards: keep them on the same level in a row */
+.grid{
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: var(--space-xl);
+  margin-top: var(--space-xl);
+  align-items: stretch;
+}
+
+.card{
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+
+   background: rgba(0,0,0,.52);
+  border: 1px solid rgba(255,255,255,.14);
   border-radius: var(--radius);
-
-  background: rgba(0,0,0,.28);
-  backdrop-filter: blur(10px);
+  padding: 1.35rem 1.35rem;
   box-shadow: var(--shadow);
+}
+
+/* More vertical distance when cards are stacked (outside grids too) */
+.card + .card{
+  margin-top: var(--space-xl);
+}
+
+.card h2, .card h3{
+  margin: 0 0 .75rem 0;
+  line-height: 1.2;
+}
+.card p{ margin: .8rem 0; }
+
+.list{
+  margin: .25rem 0 0 1.05rem;
+  color: var(--muted);
+}
+.list li{ margin: .5rem 0; }
+
+.steps{
+  margin: .25rem 0 0 1.2rem;
+  color: var(--muted);
+}
+.steps li{ margin: .6rem 0; }
+
+.media{
+  display: grid;
+  grid-template-columns: 1.1fr .9fr;
+  gap: var(--space-xl);
+  align-items: stretch;
+  margin-top: var(--space-xl);
+}
+
+.photo{
+  margin: 0;
+  background: rgba(255,255,255,.06);
+  border: 1px solid rgba(255,255,255,.14);
+  border-radius: var(--radius);
+  overflow: hidden;
+  box-shadow: var(--shadow);
+
+  min-height: 320px;
+  display: grid;
+}
+
+.photo img{
+  width: 100%;
+  height: 100%;
+  display: block;
+  object-fit: cover;
+  background: rgba(255,255,255,.35);
+}
+
+.photo figcaption{
+  padding: .9rem 1rem;
+  color: var(--muted);
+  font-size: .92rem;
+  border-top: 1px solid var(--line);
+  background: rgba(255,255,255,.48);
+}
+
+.link{
+  color: #0b1220;
+  text-underline-offset: 3px;
+  text-decoration-color: rgba(63,134,198,.55);
+}
+.link:hover{ text-decoration-color: rgba(241,208,106,.85); }
+
+.note{
+  color: var(--muted);
+  border-left: 3px solid rgba(63,134,198,.55);
+  padding-left: .9rem;
+  margin-top: 1.05rem;
+}
+
+/* Footer */
+.footer{
+  margin-top: var(--space-xl);
+  padding: 1.35rem 0 2.8rem;
+  border-top: 1px solid var(--line);
+  text-align: center;
+}
+.footer__line{
+  margin: .25rem 0;
+  color: rgba(11,18,32,.78);
+}
+.footer__line--strong{
+  font-weight: 900;
+  letter-spacing: .2px;
+}
+.footer__line--calm{
+  font-weight: 900;
+  letter-spacing: .12em;
+}
+
+/* Mobile */
+@media (max-width: 720px){
+  .topbar__inner{
+    align-items: flex-start;
+    flex-direction: column;
+  }
+
+  .nav{
+    width: 100%;
+    justify-content: flex-start;
+  }
+
+  .grid{ grid-template-columns: 1fr; }
+  .media{ grid-template-columns: 1fr; }
+  .section{ padding: var(--space-xl) 0; }
 }
