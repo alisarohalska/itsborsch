@@ -282,6 +282,41 @@ background-position:
 .card .video-link {   /* клас/селектор під свій HTML */
   margin-top: auto;   /* штовхає блок вниз */
 } </div> 
+
+.cta-row{  
+  display: flex;
+  justify-content: center;
+  margin: 1.6rem 0 0;
+}
+
+.cta-btn{
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+  padding: 0.95rem 1.3rem;
+  border-radius: 999px;
+  font-weight: 900;
+  letter-spacing: .06em;
+  text-transform: uppercase;
+
+  color: #0b1220;
+  border: 1px solid rgba(11,18,32,.18);
+  background: linear-gradient(135deg, rgba(63,134,198,.35), rgba(241,208,106,.38));
+  box-shadow: 0 12px 28px rgba(11,18,32,.18);
+
+  transition: transform .12s ease, filter .12s ease;
+}
+
+.cta-btn:hover{
+  transform: translateY(-1px);
+  filter: saturate(1.05);
+}
+
+.cta-btn:active{
+  transform: translateY(0px);
+}
+
 /* Footer */
 .footer{
   margin-top: var(--space-xl);
